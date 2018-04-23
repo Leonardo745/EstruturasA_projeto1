@@ -1,10 +1,7 @@
 //Header das funções de matrizes
-#ifndef MATRIZ_H_
-#define MATRIZ_H_
+
+typedef struct tLista lista;
+
+int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ);
 
 
-
-
-
-
-#endif
