@@ -8,3 +8,6 @@ project:
 	gcc -c main.c
 	gcc -o main matriz.o lista.o main.o
 	./main
+	rm -rf matriz.o
+	rm -rf lista.o
+	rm -rf main.o
