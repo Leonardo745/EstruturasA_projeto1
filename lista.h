@@ -5,9 +5,12 @@ typedef struct tLista lista;
 struct tLista
 {
 	char nome[20];
-	int **pMatriz, dimensaoI, dimensaoJ;
+	int dimensaoI, dimensaoJ;
+	float **pMatriz;
 	lista  *prox;
 };
+
+lista *AcharNome(lista *inicio, char nome[]);
 
 
 

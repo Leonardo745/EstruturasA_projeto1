@@ -24,16 +24,16 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 	}
 
 	lista *novo;
-	int **M;
+	float **M;
 	int i;
 	
 	novo = (lista *) malloc (sizeof(lista));
-	M = (int **) malloc (dimensaoI * sizeof (int *));
+	M = (float **) malloc (dimensaoI * sizeof (float *));
 	if (!M || !novo) return 0;
 
 	for (i = 0; i < dimensaoI; i++)
 	{
-		M[i] = (int *)malloc(dimensaoJ * sizeof(int));
+		M[i] = (float *)calloc(dimensaoJ, sizeof(float));
 	}
 	
 	
@@ -45,25 +45,27 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 	novo->prox = NULL;
 
 	if(!aux){
-		*inicio =
+		*inicio = novo;
+	}else{
+		aux->prox = novo;
 	}
 	
 
-	if(!(*inicio))
-	{
-		(*inicio) = aux;
-		return 1;
-	}
-	else
-	{
-		while (aux->prox)
-		{
-			aux = aux->prox;
-		}
+	return 1;
 
-		aux->prox = novo;
-		return 1;
-	}
+}
 
+int ImprimirMatriz(char nome[], lista **inicio){
+					
+	lista *elemento = AcharNome(*inicio, nome);
+	if(!elemento) return 0;
+	
+	int i, j;
+	for(i = 0; i < elemento->dimensaoI;i++){
+		for(j = 0;j < elemento->dimensaoJ;j++)
+			printf("%6.2f", elemento->pMatriz[i][j]);
+
+		printf("\n");
+	}
 }
 
