@@ -69,3 +69,45 @@ int ImprimirMatriz(char nome[], lista **inicio){
 	}
 }
 
+int TransporMatriz (lista **inicio, char nomeMatriz[], char matrizResultante[]){
+	
+	//Verificar se já existe uma matriz com o nome da matriz resultante
+	lista *elemento = AcharNome(*inicio, matrizResultante);
+	if (elemento) return 0;
+
+	//Verificar se existe a matriz com o nome escolhido
+	elemento = AcharNome(*inicio, nomeMatriz);
+	if(!elemento) return 0;
+	
+	//Criar matriz e struct
+	lista *novo = (lista *) malloc (sizeof(lista));
+	float **M = (float **) malloc (elemento->dimensaoI * sizeof (float *));
+	if (!M || !novo) return 0;
+
+	//Transpor a matriz
+	int i, j;
+	for (i = 0; i < elemento->dimensaoJ; i++)
+	{
+		M[i] = (float *)calloc(elemento->dimensaoI, sizeof(float));
+		for (j = 0;j < elemento->dimensaoI;j++){
+			M[i][j] = elemento->pMatriz[j][i];
+		}
+	}
+
+	strcpy(novo->nome, matrizResultante);
+	novo->dimensaoI = elemento->dimensaoJ;
+	novo->dimensaoJ = elemento->dimensaoI;
+	novo->pMatriz = M;
+	novo->prox = NULL;
+
+	lista *aux = AcharFim(*inicio);
+
+	//Adicionar matriz transposta no final da lista
+	aux->prox = novo;
+
+	//Imprimir matriz transposta
+	ImprimirMatriz(matrizResultante, inicio);
+
+	return 1;
+}
+

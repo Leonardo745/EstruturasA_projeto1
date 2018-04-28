@@ -4,5 +4,6 @@ typedef struct tLista lista;
 
 int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ);
 int ImprimirMatriz(char nome[], lista **inicio);
+int TransporMatriz (lista **inicio, char nomeMatriz[], char matrizResultante[]);
 
 

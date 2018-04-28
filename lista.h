@@ -11,6 +11,7 @@ struct tLista
 };
 
 lista *AcharNome(lista *inicio, char nome[]);
+lista *AcharFim(lista *inicio);
 
 
 

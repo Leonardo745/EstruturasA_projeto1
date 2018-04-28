@@ -14,5 +14,11 @@ lista *AcharNome(lista *inicio, char nome[]){
 	return inicio;
 }
 
+lista *AcharFim(lista *inicio){
+	if(!inicio) return NULL;
+	if(!inicio->prox) return inicio;
+	return AcharFim(inicio->prox);
+}
+
 
 
