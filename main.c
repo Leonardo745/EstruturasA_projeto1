@@ -8,7 +8,7 @@
 int main() {
 	lista *inicio = NULL;
 	int dimensaoI, dimensaoJ;
-	char nomeMatriz[20], op[3];
+	char nomeMatriz[20], matrizResultante[20], op[3];
 
 	do
 	{
@@ -56,6 +56,8 @@ int main() {
 
 		}else if(strcmp(op, "TM") == 0){
 			//Transpor uma matriz
+			scanf("%s %s", nomeMatriz, matrizResultante);
+			if (!TransporMatriz(&inicio, nomeMatriz, matrizResultante)) printf("ERRO\n");
 
 		}else if(strcmp(op, "SM") == 0){
 			//Somar duas matrizes
