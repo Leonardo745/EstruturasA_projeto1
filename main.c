@@ -7,8 +7,10 @@
 
 int main() {
 	lista *inicio = NULL;
-	int dimensaoI, dimensaoJ;
-	char nomeMatriz[20], matrizResultante[20], op[3];
+
+	int dimensaoI, dimensaoJ, valor, valores[50], i;
+	char nomeMatriz[20], nomeMatriz_2[20], matrizResultante[20], op[3];
+
 
 	do
 	{
@@ -48,11 +50,41 @@ int main() {
 		}else if(strcmp(op, "AE") == 0){
 			//Atribuir um elemento a uma matriz
 
+			scanf("%s",nomeMatriz);
+			scanf("%i %i", &dimensaoI, &dimensaoJ);
+			scanf("%i", &valor);
+			if(!AtribuirElemento (&inicio, nomeMatriz, dimensaoI, dimensaoJ, valor))
+				printf("ERRO\n");
+
 		}else if(strcmp(op, "AL") == 0){
 			//Atribuir uma linha a uma matriz
+			i = 0;
 
+			scanf("%s",nomeMatriz);
+			scanf("%i", &dimensaoI);
+
+			while(scanf("%d", &valores[i]))
+			{
+				i++;	
+			}
+
+			if(!AtribuirLinha (&inicio, nomeMatriz, dimensaoI, valores, i))
+				printf("ERRO\n");
+			
 		}else if(strcmp(op, "AC") == 0){
 			//Atribuir uma coluna a uma matriz
+			i = 0;
+
+			scanf("%s",nomeMatriz);
+			scanf("%i", &dimensaoJ);
+
+			while(scanf("%d", &valores[i]))
+			{
+				i++;	
+			}
+
+			if(!AtribuirColuna (&inicio, nomeMatriz, dimensaoJ, valores, i))
+				printf("ERRO\n");
 
 		}else if(strcmp(op, "TM") == 0){
 			//Transpor uma matriz
@@ -67,6 +99,12 @@ int main() {
 
 		}else if(strcmp(op, "MM") == 0){
 			//Multiplicar uma matriz por outra
+
+			scanf("%s",nomeMatriz);
+			scanf("%s",nomeMatriz_2);
+			scanf("%s",matrizResultante);
+
+			if(!MultiplicaMatrizElemento(&inicio, nomeMatriz, nomeMatriz_2, matrizResultante)) printf("ERRO\n");
 
 		}else if(strcmp(op, "ME") == 0){
 			//Multiplicar duas matrizes (elemento a elemento)
