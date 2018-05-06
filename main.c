@@ -64,13 +64,24 @@ int main() {
 			{
 				i++;	
 			}
-			//valores[i] = \0;
 
 			if(!AtribuirLinha (&inicio, nomeMatriz, dimensaoI, valores, i))
 				printf("ERRO\n");
 			
 		}else if(strcmp(op, "AC") == 0){
 			//Atribuir uma coluna a uma matriz
+			i = 0;
+
+			scanf("%s",nomeMatriz);
+			scanf("%i", &dimensaoJ);
+
+			while(scanf("%d", &valores[i]))
+			{
+				i++;	
+			}
+
+			if(!AtribuirColuna (&inicio, nomeMatriz, dimensaoJ, valores, i))
+				printf("ERRO\n");
 
 		}else if(strcmp(op, "TM") == 0){
 			//Transpor uma matriz
