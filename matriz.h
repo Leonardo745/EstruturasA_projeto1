@@ -11,3 +11,4 @@ int AtribuirColuna (lista **inicio, char nomeMatriz[], int dimensaoJ, int valore
 int MultiplicaMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
 
 
+
