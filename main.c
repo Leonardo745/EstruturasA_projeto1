@@ -8,7 +8,7 @@
 int main() {
 	lista *inicio = NULL;
 	int dimensaoI, dimensaoJ, valor, valores[50], i;
-	char nomeMatriz[20], matrizResultante[20], op[3];
+	char nomeMatriz[20], nomeMatriz_2[20], matrizResultante[20], op[3];
 
 	do
 	{
@@ -96,6 +96,11 @@ int main() {
 
 		}else if(strcmp(op, "MM") == 0){
 			//Multiplicar uma matriz por outra
+			scanf("%s",nomeMatriz);
+			scanf("%s",nomeMatriz_2);
+			scanf("%s",matrizResultante);
+
+			if(!MultiplicaMatrizElemento(&inicio, nomeMatriz, nomeMatriz_2, matrizResultante)) printf("ERRO\n");
 
 		}else if(strcmp(op, "ME") == 0){
 			//Multiplicar duas matrizes (elemento a elemento)
