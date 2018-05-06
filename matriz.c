@@ -114,7 +114,7 @@ int TransporMatriz (lista **inicio, char nomeMatriz[], char matrizResultante[]){
 int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ, int valor)
 {
 	lista *aux = (*inicio);
-	int i, j;
+
 	while(aux && (strcmp ((aux->nome), nomeMatriz)) )
 	{
 		aux = aux->prox;
@@ -122,13 +122,38 @@ int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dime
 	
 	if(aux)
 	{	
-		if( (dimensaoI > (aux->dimensaoI)) || (dimensaoJ > (aux->dimensaoJ)) ) return 0;
+		if( (dimensaoI >= (aux->dimensaoI)) || (dimensaoJ >= (aux->dimensaoJ)) ) return 0;
 
 		aux->pMatriz[dimensaoI][dimensaoJ] = valor;
-		printf("ELEMENTO ATRIBUITO COM SUCESSO!\n");
+		printf("OK\n");
 		return 1;
 	}
-	printf("MATRIZ NAO ENCONTRADA!\n");
 	return 0;
 
+}
+
+int AtribuirLinha (lista **inicio, char nomeMatriz[], int dimensaoI, int valores[], int quant)
+{
+	lista *aux = (*inicio);
+	int i, j = 0;
+
+	while(aux && (strcmp ((aux->nome), nomeMatriz)) )
+	{
+		aux = aux->prox;
+	}
+	
+	if(aux)
+	{
+		if( (dimensaoI >= (aux->dimensaoI)) || (quant > (aux->dimensaoJ)) ) return 0;
+
+		for(i = 0; i < quant; i++)
+		{
+			aux->pMatriz[dimensaoI][j] = valores[i];
+			j++;
+			
+		}
+		printf("OK\n");
+		return 1;
+	}
+	return 0;
 }

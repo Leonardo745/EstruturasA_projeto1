@@ -7,7 +7,7 @@
 
 int main() {
 	lista *inicio = NULL;
-	int dimensaoI, dimensaoJ, valor;
+	int dimensaoI, dimensaoJ, valor, valores[50], i;
 	char nomeMatriz[20], matrizResultante[20], op[3];
 
 	do
@@ -47,17 +47,28 @@ int main() {
 
 		}else if(strcmp(op, "AE") == 0){
 			//Atribuir um elemento a uma matriz
-			printf("Nome da matriz: ");
 			scanf("%s",nomeMatriz);
-			printf("Dimensoes I e J: ");
 			scanf("%i %i", &dimensaoI, &dimensaoJ);
-			printf("Valor: ");
 			scanf("%i", &valor);
-			AtribuirElemento (&inicio, nomeMatriz, dimensaoI, dimensaoJ, valor);
+			if(!AtribuirElemento (&inicio, nomeMatriz, dimensaoI, dimensaoJ, valor))
+				printf("ERRO\n");
 
 		}else if(strcmp(op, "AL") == 0){
 			//Atribuir uma linha a uma matriz
+			i = 0;
 
+			scanf("%s",nomeMatriz);
+			scanf("%i", &dimensaoI);
+
+			while(scanf("%d", &valores[i]))
+			{
+				i++;	
+			}
+			//valores[i] = \0;
+
+			if(!AtribuirLinha (&inicio, nomeMatriz, dimensaoI, valores, i))
+				printf("ERRO\n");
+			
 		}else if(strcmp(op, "AC") == 0){
 			//Atribuir uma coluna a uma matriz
 

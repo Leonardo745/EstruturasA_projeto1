@@ -6,5 +6,6 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 int ImprimirMatriz(char nome[], lista **inicio);
 int TransporMatriz (lista **inicio, char nomeMatriz[], char matrizResultante[]);
 int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ, int valor);
+int AtribuirLinha (lista **inicio, char nomeMatriz[], int dimensaoI, int valores[], int quant);
 
 
