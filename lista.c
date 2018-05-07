@@ -5,9 +5,8 @@
 lista *AcharNome(lista *inicio, char nome[]){	
 		
 	if(!inicio) return NULL;
-	while(inicio->prox && strcmp(inicio->nome, nome) != 0){
-			inicio = inicio->prox;
-		}
+	while(inicio->prox && strcmp(inicio->nome, nome) != 0) inicio = inicio->prox;
+
 	if(strcmp(inicio->nome, nome) != 0) return NULL;
 	return inicio;
 }
