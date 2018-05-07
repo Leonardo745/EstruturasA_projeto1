@@ -195,21 +195,21 @@ int MultiplicaMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz
 	lista *matriz_1 = AcharNome(*inicio, nomeMatriz);
 	lista *matriz_2 = AcharNome(*inicio, nomeMatriz_2);
 	
-	//Verifica se as matrizes existem
+	//Verifica se as matrizes existem.
 	if( (!matriz_1) || (!matriz_2) ) return 0;
 
-	//Verifica se as dimensões são iguais
+	//Verifica se as dimensões são iguais.
 	if( ((matriz_1->dimensaoI) != (matriz_2->dimensaoI)) || ((matriz_1->dimensaoJ) != (matriz_2->dimensaoJ)) ) return 0;
 
-	//Verifica se a matriz resultante já existe
+	//Verifica se a matriz resultante já existe.
 	if( AcharNome(*inicio, nomeResultante) ) return 0;
 	
-	//Criar matriz e struct
+	//Criar matriz e struct.
 	lista *novo = (lista *) malloc (sizeof(lista));
 	float **M = (float **) malloc (matriz_1->dimensaoI * sizeof (float *));
 	if (!M || !novo) return 0;
 
-	//Multiplicar os elementos das matrizes
+	//Multiplicar os elementos das matrizes.
 	int i, j;
 	for (i = 0; i < matriz_1->dimensaoI; i++)
 	{
