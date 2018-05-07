@@ -7,11 +7,17 @@
 
 //printf("\nDEBUG - PASSEI\n");
 
+int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ)
+{
+	
+	if((dimensaoI > 50 || dimensaoI < 1) || (dimensaoJ > 50 || dimensaoI < 1)) return 0;
+
 
 int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ)
 {
 	
 	if((dimensaoI > 50 || dimensaoI < 1) || (dimensaoJ > 50 || dimensaoI < 1)) return 0;
+
 
 	lista *aux = (*inicio);
 
@@ -36,8 +42,7 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 		M[i] = (float *)calloc(dimensaoJ, sizeof(float));
 	}
 	
-	
-	
+
 	strcpy(novo->nome, nomeMatriz);
 	novo->dimensaoI = dimensaoI;
 	novo->dimensaoJ = dimensaoJ;
@@ -54,6 +59,23 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 	return 1;
 
 }
+
+
+int DestruirMatriz (lista **inicio, char nomeMatriz[])
+{
+	int i;
+	
+	//Verificar se existe a matriz com o nome escolhido
+	lista *elemento = AcharNome(*inicio, nomeMatriz);
+	if(!elemento) return 0;
+
+	for (i = 0; i < elemento->dimensaoI; i++)
+		free(elemento->pMatriz[i]);
+
+	free(elemento);
+	return 1;
+}
+
 
 int ImprimirMatriz(char nome[], lista **inicio){
 					
@@ -359,4 +381,5 @@ int MultiplicaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], ch
 
 	//Imprimir matriz
 	ImprimirMatriz(nomeResultante, inicio);
+
 }

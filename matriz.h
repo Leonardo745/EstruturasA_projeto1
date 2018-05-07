@@ -3,6 +3,9 @@
 typedef struct tLista lista;
 
 int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ);
+
+int DestruirMatriz (lista **inicio, char nomeMatriz[]);
+
 int ImprimirMatriz(char nome[], lista **inicio);
 int TransporMatriz (lista **inicio, char nomeMatriz[], char matrizResultante[]);
 int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ, int valor);
@@ -12,5 +15,4 @@ int MultiplicaMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz
 int MultiplicaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
 int SomaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
 int DivideMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
-
 

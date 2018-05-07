@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "lista.h"
-
-
 lista *AcharNome(lista *inicio, char nome[]){	
 		
 	if(!inicio) return NULL;
@@ -18,7 +16,6 @@ lista *AcharFim(lista *inicio){
 	if(!inicio) return NULL;
 	if(!inicio->prox) return inicio;
 	return AcharFim(inicio->prox);
+
 }
-
-
 
