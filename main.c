@@ -7,6 +7,7 @@
 
 int main() {
 	lista *inicio = NULL;
+  
 	float valores[50], valor;
 	int dimensaoI, dimensaoJ, i;
 	char nomeMatriz[20], nomeMatriz_2[20], matrizResultante[20], op[3];
@@ -14,7 +15,7 @@ int main() {
 	do
 	{
 		//Remover Menu no final do Projeto
-		printf("\n\n|------------------------------------------------- MENU -------------------------------------------------|\n");
+		/*printf("\n\n|------------------------------------------------- MENU -------------------------------------------------|\n");
 		printf("|CM- Declarar uma matriz (CM <i> <j>)		       							 |\n");
 		printf("|DM- Destruir uma matriz (DM <nome>)		       							 |\n");
 		printf("|IM- Imprimir uma matriz (IM <nome>)		       							 |\n");
@@ -29,6 +30,7 @@ int main() {
 		printf("|FE- Sair					       							 |\n");
 		printf("|--------------------------------------------------------------------------------------------------------|\n");
 		printf("Opcao: ");
+    */
 		__fpurge(stdin);
 		scanf("%s", op);
 		
