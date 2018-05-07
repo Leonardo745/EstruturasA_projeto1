@@ -1,5 +1,4 @@
 //Header das funções de lista
-
 typedef struct tLista lista;
 
 struct tLista
@@ -12,10 +11,4 @@ struct tLista
 
 lista *AcharNome(lista *inicio, char nome[]);
 lista *AcharFim(lista *inicio);
-
-
-
-
-
-
 

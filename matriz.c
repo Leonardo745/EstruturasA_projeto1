@@ -13,6 +13,7 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 	
 	if((dimensaoI > 50 || dimensaoI < 1) || (dimensaoJ > 50 || dimensaoI < 1)) return 0;
 
+
 	lista *aux = (*inicio);
 
 	if(aux){
@@ -36,8 +37,7 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 		M[i] = (float *)calloc(dimensaoJ, sizeof(float));
 	}
 	
-	
-	
+
 	strcpy(novo->nome, nomeMatriz);
 	novo->dimensaoI = dimensaoI;
 	novo->dimensaoJ = dimensaoJ;
@@ -55,6 +55,35 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 
 }
 
+int DestruirMatriz (lista **inicio, char nomeMatriz[])
+{
+	int i;
+	
+	//Verificar se existe a matriz com o nome escolhido
+	lista *elemento = AcharNome(*inicio, nomeMatriz);
+	if(!elemento) return 0;
+
+	lista *aux = (*inicio);
+	if(strcmp(aux->nome, nomeMatriz) == 0){
+		//O elemento esta no começo da lista
+		(*inicio) = elemento->prox;
+	}
+	else{
+		//O elemento não esta no começo
+		while(aux->prox && strcmp(aux->prox->nome, nomeMatriz) != 0)
+			aux = aux->prox;
+
+		aux->prox = elemento->prox;
+	}
+
+	for (i = 0; i < elemento->dimensaoI; i++)
+		free(elemento->pMatriz[i]);
+
+	free(elemento);
+	return 1;
+}
+
+
 int ImprimirMatriz(char nome[], lista **inicio){
 					
 	lista *elemento = AcharNome(*inicio, nome);
@@ -68,6 +97,21 @@ int ImprimirMatriz(char nome[], lista **inicio){
 		printf("\n");
 	}
 }
+
+//REMOVER
+int ImprimirTodasMatriz(lista **inicio){
+	if(!(*inicio))return 0;
+	lista *aux = *inicio;
+
+	while(aux){
+		printf("\n%s\n", aux->nome);
+		ImprimirMatriz(aux->nome, inicio);
+		aux = aux->prox;
+	}
+
+	return 1;
+}
+//
 
 int TransporMatriz (lista **inicio, char nomeMatriz[], char matrizResultante[]){
 	
@@ -111,7 +155,7 @@ int TransporMatriz (lista **inicio, char nomeMatriz[], char matrizResultante[]){
 	return 1;
 }
 
-int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ, int valor)
+int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ, float valor)
 {
 	lista *aux = AcharNome(*inicio, nomeMatriz);
 	
@@ -127,7 +171,7 @@ int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dime
 
 }
 
-int AtribuirLinha (lista **inicio, char nomeMatriz[], int dimensaoI, int valores[], int quant)
+int AtribuirLinha (lista **inicio, char nomeMatriz[], int dimensaoI, float valores[], int quant)
 {
 	int i, j = 0;
 	lista *aux = AcharNome(*inicio, nomeMatriz);
@@ -148,7 +192,7 @@ int AtribuirLinha (lista **inicio, char nomeMatriz[], int dimensaoI, int valores
 	return 0;
 }
 
-int AtribuirColuna (lista **inicio, char nomeMatriz[], int dimensaoJ, int valores[], int quant)
+int AtribuirColuna (lista **inicio, char nomeMatriz[], int dimensaoJ, float valores[], int quant)
 {
 	int i;
 	lista *aux = AcharNome(*inicio, nomeMatriz);
@@ -359,4 +403,5 @@ int MultiplicaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], ch
 
 	//Imprimir matriz
 	ImprimirMatriz(nomeResultante, inicio);
+
 }

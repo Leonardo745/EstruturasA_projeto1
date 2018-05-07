@@ -7,7 +7,8 @@
 
 int main() {
 	lista *inicio = NULL;
-	int dimensaoI, dimensaoJ, valor, valores[50], i;
+	float valores[50], valor;
+	int dimensaoI, dimensaoJ, i;
 	char nomeMatriz[20], nomeMatriz_2[20], matrizResultante[20], op[3];
 
 	do
@@ -30,7 +31,13 @@ int main() {
 		printf("Opcao: ");
 		__fpurge(stdin);
 		scanf("%s", op);
-
+		
+		//REMOVER
+		if (strcmp(op, "TM") == 0){
+			ImprimirTodasMatriz(&inicio);
+		}else
+		//
+			
 		if(strcmp(op, "CM") == 0){
 			//Criação da Matriz
 			scanf("%s %d %d", nomeMatriz, &dimensaoI, &dimensaoJ);
@@ -40,6 +47,10 @@ int main() {
 		}else if(strcmp(op, "DM") == 0){
 			//Destruir Matriz
 
+			scanf("%s", nomeMatriz);
+			if(DestruirMatriz(&inicio, nomeMatriz)) printf("OK\n");
+			else printf("ERRO\n");
+
 		}else if(strcmp(op, "IM") == 0){
 			//Imprimir uma matriz
 			scanf("%s", nomeMatriz);
@@ -47,9 +58,10 @@ int main() {
 
 		}else if(strcmp(op, "AE") == 0){
 			//Atribuir um elemento a uma matriz
+
 			scanf("%s",nomeMatriz);
 			scanf("%i %i", &dimensaoI, &dimensaoJ);
-			scanf("%i", &valor);
+			scanf("%f", &valor);
 			if(!AtribuirElemento (&inicio, nomeMatriz, dimensaoI, dimensaoJ, valor))
 				printf("ERRO\n");
 
@@ -60,7 +72,7 @@ int main() {
 			scanf("%s",nomeMatriz);
 			scanf("%i", &dimensaoI);
 
-			while(scanf("%d", &valores[i]))
+			while(scanf("%f", &valores[i]))
 			{
 				i++;	
 			}
@@ -75,7 +87,7 @@ int main() {
 			scanf("%s",nomeMatriz);
 			scanf("%i", &dimensaoJ);
 
-			while(scanf("%d", &valores[i]))
+			while(scanf("%f", &valores[i]))
 			{
 				i++;	
 			}
@@ -119,13 +131,13 @@ int main() {
 			scanf("%s",matrizResultante);
 
 			if(!MultiplicaMatrizElemento(&inicio, nomeMatriz, nomeMatriz_2, matrizResultante)) printf("ERRO\n");
+
 		}
 
 
 	}while (strcmp(op, "FE") != 0);
 
 	return 0;
+
 }
-
-
 
