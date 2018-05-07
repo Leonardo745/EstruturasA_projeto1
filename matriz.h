@@ -9,6 +9,8 @@ int AtribuirElemento (lista **inicio, char nomeMatriz[], int dimensaoI, int dime
 int AtribuirLinha (lista **inicio, char nomeMatriz[], int dimensaoI, int valores[], int quant);
 int AtribuirColuna (lista **inicio, char nomeMatriz[], int dimensaoJ, int valores[], int quant);
 int MultiplicaMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
-
+int MultiplicaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
+int SomaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
+int DivideMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[]);
 
 
