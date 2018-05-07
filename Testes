@@ -1,0 +1,31 @@
+CM S 2 3
+
+AE S 1 2 55
+AE T 1 2 55
+AE S 2 2 55
+AE S 1 3 55
+
+AL S 1 5 8 9 #
+AL T 1 5 8 9 #
+AL S 2 5 8 9 #
+AL S 1 5 8 9 4 #
+
+AC S 1 5 8 #
+AC T 1 5 8 #
+AC S 3 5 8 #
+AC S 1 5 8 9 #
+
+
+CM A 2 3
+
+CM S 3 3
+
+AL A 0 1 2 7 #
+AL A 1 3 4 5 #
+
+AL S 0 1 -1 3 #
+AL S 1 -3 4 2 #
+AL S 2 -2 8 9 #
+
+
+MM A S R
