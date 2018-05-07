@@ -152,11 +152,6 @@ int AtribuirColuna (lista **inicio, char nomeMatriz[], int dimensaoJ, int valore
 {
 	int i;
 	lista *aux = AcharNome(*inicio, nomeMatriz);
-
-	while(aux && (strcmp ((aux->nome), nomeMatriz)) )
-	{
-		aux = aux->prox;
-	}
 	
 	if(aux)
 	{
@@ -212,10 +207,156 @@ int MultiplicaMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz
 
 	lista *aux = AcharFim(*inicio);
 
-	//Adicionar matriz transposta no final da lista
+	//Adicionar matriz no final da lista
 	aux->prox = novo;
 
-	//Imprimir matriz transposta
+	//Imprimir matriz
 	ImprimirMatriz(nomeResultante, inicio);
 	
+}
+
+int SomaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[])
+{
+	lista *matriz_1 = AcharNome(*inicio, nomeMatriz);
+	lista *matriz_2 = AcharNome(*inicio, nomeMatriz_2);
+	
+	//Verifica se as matrizes existem
+	if( (!matriz_1) || (!matriz_2) ) return 0;
+
+	//Verifica se as dimensões são iguais
+	if( ((matriz_1->dimensaoI) != (matriz_2->dimensaoI)) || ((matriz_1->dimensaoJ) != (matriz_2->dimensaoJ)) ) return 0;
+
+	//Verifica se a matriz resultante já existe
+	if( AcharNome(*inicio, nomeResultante) ) return 0;
+	
+	//Criar matriz e struct
+	lista *novo = (lista *) malloc (sizeof(lista));
+	float **M = (float **) malloc (matriz_1->dimensaoI * sizeof (float *));
+	if (!M || !novo) return 0;
+
+	//Somar os elementos das matrizes
+	int i, j;
+	for (i = 0; i < matriz_1->dimensaoI; i++)
+	{
+		M[i] = (float *)calloc(matriz_1->dimensaoJ, sizeof(float));
+		for (j = 0;j < matriz_1->dimensaoJ;j++)
+		{
+			M[i][j] = (matriz_1->pMatriz[i][j]) + (matriz_2->pMatriz[i][j]);
+		}
+	}
+
+	
+	strcpy(novo->nome, nomeResultante);
+	novo->dimensaoI = matriz_1->dimensaoI;
+	novo->dimensaoJ = matriz_1->dimensaoJ;
+	novo->pMatriz = M;
+	novo->prox = NULL;
+
+	lista *aux = AcharFim(*inicio);
+
+	//Adicionar matriz no final da lista
+	aux->prox = novo;
+
+	//Imprimir matriz
+	ImprimirMatriz(nomeResultante, inicio);
+	
+}
+
+int DivideMatrizElemento (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[])
+{
+	lista *matriz_1 = AcharNome(*inicio, nomeMatriz);
+	lista *matriz_2 = AcharNome(*inicio, nomeMatriz_2);
+	
+	//Verifica se as matrizes existem
+	if( (!matriz_1) || (!matriz_2) ) return 0;
+
+	//Verifica se as dimensões são iguais
+	if( ((matriz_1->dimensaoI) != (matriz_2->dimensaoI)) || ((matriz_1->dimensaoJ) != (matriz_2->dimensaoJ)) ) return 0;
+
+	//Verifica se a matriz resultante já existe
+	if( AcharNome(*inicio, nomeResultante) ) return 0;
+	
+	//Criar matriz e struct
+	lista *novo = (lista *) malloc (sizeof(lista));
+	float **M = (float **) malloc (matriz_1->dimensaoI * sizeof (float *));
+	if (!M || !novo) return 0;
+
+	//Dividir os elementos das matrizes
+	int i, j;
+	for (i = 0; i < matriz_1->dimensaoI; i++)
+	{
+		M[i] = (float *)calloc(matriz_1->dimensaoJ, sizeof(float));
+		for (j = 0;j < matriz_1->dimensaoJ;j++)
+		{
+			if(matriz_2->pMatriz[i][j] == 0) return 0;
+			M[i][j] = (matriz_1->pMatriz[i][j]) / (matriz_2->pMatriz[i][j]);
+		}
+	}
+
+	
+	strcpy(novo->nome, nomeResultante);
+	novo->dimensaoI = matriz_1->dimensaoI;
+	novo->dimensaoJ = matriz_1->dimensaoJ;
+	novo->pMatriz = M;
+	novo->prox = NULL;
+
+	lista *aux = AcharFim(*inicio);
+
+	//Adicionar matriz no final da lista
+	aux->prox = novo;
+
+	//Imprimir matriz
+	ImprimirMatriz(nomeResultante, inicio);
+}
+
+int MultiplicaMatriz (lista **inicio, char nomeMatriz[], char nomeMatriz_2[], char nomeResultante[])
+{
+	lista *matriz_1 = AcharNome(*inicio, nomeMatriz);
+	lista *matriz_2 = AcharNome(*inicio, nomeMatriz_2);
+	int acum = 0;
+
+	//Verifica se as matrizes existem
+	if( (!matriz_1) || (!matriz_2) ) return 0;
+
+	//Verifica se as dimensões são iguais
+	if( ((matriz_1->dimensaoJ) != (matriz_2->dimensaoI)) ) return 0;
+
+	//Verifica se a matriz resultante já existe
+	if( AcharNome(*inicio, nomeResultante) ) return 0;
+	
+	//Criar matriz e struct
+	lista *novo = (lista *) malloc (sizeof(lista));
+	float **M = (float **) malloc (matriz_1->dimensaoI * sizeof (float *));
+	if (!M || !novo) return 0;
+
+	//Multiplicar os elementos das matrizes
+	int i, j, k;
+	for (i = 0; i < matriz_1->dimensaoI; i++)
+	{
+		M[i] = (float *)calloc(matriz_2->dimensaoJ, sizeof(float));
+		for (j = 0;j < matriz_2->dimensaoJ;j++)
+		{
+			acum = 0;
+			for(k = 0; k < matriz_2->dimensaoI; k++)
+			{
+				acum = acum + ((matriz_1->pMatriz[i][k]) * (matriz_2->pMatriz[k][j]));
+			}
+			M[i][j] = acum;
+		}
+	}
+
+	
+	strcpy(novo->nome, nomeResultante);
+	novo->dimensaoI = matriz_1->dimensaoI;
+	novo->dimensaoJ = matriz_2->dimensaoJ;
+	novo->pMatriz = M;
+	novo->prox = NULL;
+
+	lista *aux = AcharFim(*inicio);
+
+	//Adicionar matriz no final da lista
+	aux->prox = novo;
+
+	//Imprimir matriz
+	ImprimirMatriz(nomeResultante, inicio);
 }
