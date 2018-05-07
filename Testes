@@ -17,12 +17,15 @@ AC S 1 5 8 9 #
 
 
 CM A 2 3
-CM S 2 3
 
-AL A 0 5 9 7 #
-AL A 1 4 1 2 #
+CM S 3 3
 
-AL S 0 10 5 7 #
-AL S 1 3 4 8 #
+AL A 0 1 2 7 #
+AL A 1 3 4 5 #
+
+AL S 0 1 -1 3 #
+AL S 1 -3 4 2 #
+AL S 2 -2 8 9 #
+
 
 MM A S R

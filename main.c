@@ -11,7 +11,6 @@ int main() {
 	int dimensaoI, dimensaoJ, valor, valores[50], i;
 	char nomeMatriz[20], nomeMatriz_2[20], matrizResultante[20], op[3];
 
-
 	do
 	{
 		//Remover Menu no final do Projeto
@@ -41,6 +40,7 @@ int main() {
 
 		}else if(strcmp(op, "DM") == 0){
 			//Destruir Matriz
+
 			scanf("%s", nomeMatriz);
 			if(DestruirMatriz(&inicio, nomeMatriz)) printf("OK\n");
 			else printf("ERRO\n");
@@ -96,21 +96,35 @@ int main() {
 
 		}else if(strcmp(op, "SM") == 0){
 			//Somar duas matrizes
+			scanf("%s",nomeMatriz);
+			scanf("%s",nomeMatriz_2);
+			scanf("%s",matrizResultante);
+
+			if(!SomaMatriz(&inicio, nomeMatriz, nomeMatriz_2, matrizResultante)) printf("ERRO\n");
 
 		}else if(strcmp(op, "DV") == 0){
 			//Dividir uma matriz por outra (elemento a elemento)
+			scanf("%s",nomeMatriz);
+			scanf("%s",nomeMatriz_2);
+			scanf("%s",matrizResultante);
+
+			if(!DivideMatrizElemento(&inicio, nomeMatriz, nomeMatriz_2, matrizResultante)) printf("ERRO\n");
 
 		}else if(strcmp(op, "MM") == 0){
 			//Multiplicar uma matriz por outra
+			scanf("%s",nomeMatriz);
+			scanf("%s",nomeMatriz_2);
+			scanf("%s",matrizResultante);
 
+			if(!MultiplicaMatriz(&inicio, nomeMatriz, nomeMatriz_2, matrizResultante)) printf("ERRO\n");
+
+		}else if(strcmp(op, "ME") == 0){
+			//Multiplicar duas matrizes (elemento a elemento)
 			scanf("%s",nomeMatriz);
 			scanf("%s",nomeMatriz_2);
 			scanf("%s",matrizResultante);
 
 			if(!MultiplicaMatrizElemento(&inicio, nomeMatriz, nomeMatriz_2, matrizResultante)) printf("ERRO\n");
-
-		}else if(strcmp(op, "ME") == 0){
-			//Multiplicar duas matrizes (elemento a elemento)
 
 		}
 
@@ -118,4 +132,6 @@ int main() {
 	}while (strcmp(op, "FE") != 0);
 
 	return 0;
+
 }
+
