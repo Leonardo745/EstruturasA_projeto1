@@ -35,7 +35,7 @@ int main() {
 		scanf("%s", op);
 		
 		//REMOVER
-		if (strcmp(op, "TM") == 0){
+		if (strcmp(op, "ITM") == 0){
 			ImprimirTodasMatriz(&inicio);
 		}else
 		//
