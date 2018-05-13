@@ -12,12 +12,6 @@ int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensao
 	if((dimensaoI > 50 || dimensaoI < 1) || (dimensaoJ > 50 || dimensaoI < 1)) return 0;
 
 
-int DeclaraMatriz(lista **inicio, char nomeMatriz[], int dimensaoI, int dimensaoJ)
-{
-	
-	if((dimensaoI > 50 || dimensaoI < 1) || (dimensaoJ > 50 || dimensaoI < 1)) return 0;
-
-
 	lista *aux = (*inicio);
 
 	if(aux){
